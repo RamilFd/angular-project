@@ -1,0 +1,17 @@
+<div class="user-card">
+  <p>{{ id | uppercase }}: {{user.id}}</p>
+  <p>Имя: <b>{{user.name}}</b></p>
+  <p>E-mail: <b>{{user.email}}</b></p>
+  <p>Телефон: <b>{{user.phone}}</b></p>
+  <p>Компания: {{user.company.name}}</p>
+  <hr>
+  <div class="btn-user-card">
+    <button (click)="editUserCard()" (click)="openDialogCard()">Редактировать</button>
+    <button (click)="deleteUserCard()">Удалить</button>
+  </div>
+</div>
+
+
+
+
+

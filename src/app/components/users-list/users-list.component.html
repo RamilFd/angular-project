@@ -1,0 +1,17 @@
+<div class="users-list">
+  <button mat-raised-button (click)="openCreateDialog()" class="btn-add-user">Добавить пользователя</button>
+  <div class="user-list-cards">
+    <ng-container *ngFor="let user of users$ | async">
+      <app-user-card
+      [user]="user"
+      (deleteUser)="deleteUser($event)"
+      (editUser)="editUser()"
+      (openDialog)="openEditDialog(user)"
+      ></app-user-card>
+    </ng-container>
+  </div>
+</div>
+
+
+
+

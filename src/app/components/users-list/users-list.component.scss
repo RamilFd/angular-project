@@ -1,0 +1,18 @@
+.users-list{
+  padding: 5px 15px 25px;
+  max-width: 1055px;
+  margin: 0 auto;
+}
+
+.btn-add-user{
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.user-list-cards{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+
+}
