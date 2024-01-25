@@ -23,7 +23,7 @@ export class UsersApiService {
   }
 
   editUser(user: IUser): Observable<IUser[]>{
-    return this.http.put<IUser[]>(`${environment.api_url}/${user.id}`, user);
+    return this.http.put<IUser[]>(`${environment.api_url}/1`, user);
   }
 
   deleteUser(id: number): Observable<IUser[]>{
