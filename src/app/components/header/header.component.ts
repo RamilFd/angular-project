@@ -6,7 +6,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 
-
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -14,6 +13,5 @@ import {MatInputModule} from '@angular/material/input';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
 
-}
+export class HeaderComponent {}

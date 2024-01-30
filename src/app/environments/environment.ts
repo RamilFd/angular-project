@@ -1,3 +1,1 @@
-export const environments = {
-
-};
+export const environments = {};

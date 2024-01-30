@@ -9,7 +9,6 @@ import { selectUsersList } from "./users.selectors";
 import { LocalStorageService } from "../services/local-storage.service";
 import { LOCAL_STORAGE_USERS_KEY } from "../app.config";
 
-
 @Injectable()
 
 export class UsersEffects {
@@ -20,7 +19,6 @@ export class UsersEffects {
   private usersApiService = inject(UsersApiService);
   private localStorageKey = inject(LOCAL_STORAGE_USERS_KEY);
 
-
   loadUsers$ = createEffect(()=> this.actions$.pipe(
     ofType(usersActions.loadUsers),
     withLatestFrom(this.store.pipe(select(selectUsersList))),
@@ -28,15 +26,14 @@ export class UsersEffects {
       const usersFromBack = this.localStorageService.getUsersFromLocalStorage(this.localStorageKey);
       if (usersFromBack && usersFromBack.length > 0) {
         return of(usersActions.loadUsersSuccess({users: usersFromBack}))
-      }
-      else return this.usersApiService.getUsers()
-      .pipe(
-        map((users: IUser[]) => (usersActions.loadUsersSuccess({users}))),
-        catchError((error) => {
-          console.error('Error', error);
-          return of(usersActions.loadUsersFailed({ error }));
-        })
-      )
+      } else return this.usersApiService.getUsers()
+        .pipe(
+          map((users: IUser[]) => (usersActions.loadUsersSuccess({users}))),
+          catchError((error) => {
+            console.error('Error', error);
+            return of(usersActions.loadUsersFailed({ error }));
+          })
+        )
     })
   ))
 
@@ -85,21 +82,4 @@ export class UsersEffects {
       })
     ), { dispatch: false }
   );
-
-  // ---------- Загрузка юзеров с сервера без localStorage----------------
-  //
-  // loadUsers$ = createEffect(()=> this.actions$.pipe(
-  //   ofType(usersActions.loadUsers),
-  //   switchMap(() => this.usersApiService.getUsers()
-  //     .pipe(
-  //       map((users: IUser[]) => (usersActions.loadUsersSuccess({users}))),
-  //       catchError((error) => {
-  //         console.error('Error', error);
-  //         return of(usersActions.loadUsersFailed({ error }));
-  //       })
-  //     ))
-  // ));
 }
-
-
-

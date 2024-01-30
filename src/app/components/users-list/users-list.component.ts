@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserCardComponent } from "../user-card/user-card.component";
-import { UsersService } from '../../services/users.service';
 import { IUser } from '../../interfaces/IUser';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { CreateEditUserComponent } from '../create-edit-user/create-edit-user.component';
@@ -9,19 +8,17 @@ import { Store } from '@ngrx/store';
 import { createUser, deleteUser, editUser, loadUsers } from '../../store/users.actions';
 import { selectUsersList } from '../../store/users.selectors';
 
-
 @Component({
-    selector: 'app-users-list',
-    standalone: true,
-    templateUrl: './users-list.component.html',
-    styleUrl: './users-list.component.scss',
-    imports: [UserCardComponent, NgFor, AsyncPipe ],
+  selector: 'app-users-list',
+  standalone: true,
+  templateUrl: './users-list.component.html',
+  styleUrl: './users-list.component.scss',
+  imports: [ UserCardComponent, NgFor, AsyncPipe ],
 })
 
 export class UsersListComponent implements OnInit {
 
-  constructor(
-    public usersService:UsersService,
+  constructor (
     private dialog: MatDialog,
     private store: Store,
     ) {}
@@ -35,23 +32,15 @@ export class UsersListComponent implements OnInit {
   }
 
   deleteUser(user: IUser){
-    //this.usersService.deleteUsers(user);
     this.store.dispatch(deleteUser({id: user.id}));
   }
 
   createUser(newUser: IUser){
-    //this.usersService.createUser(newUser);
     this.store.dispatch(createUser({user: newUser}));
   }
 
-  editUser() {
-    //this.usersService.editUser(user);
-  }
-
   openCreateDialog(): void {
-
     const dialogRef = this.dialog.open(CreateEditUserComponent);
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.createdUser = {
@@ -72,7 +61,6 @@ export class UsersListComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateEditUserComponent, {
       data: user
     });
-
     dialogRef.afterClosed().subscribe((result) => {
       this.editedUser = {
         id: result?.id,
@@ -87,4 +75,3 @@ export class UsersListComponent implements OnInit {
     })
   }
 }
-

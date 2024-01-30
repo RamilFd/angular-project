@@ -5,14 +5,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { NgIf } from '@angular/common';
-
-import {
-  MatDialogTitle,
-  MatDialogContent,
-  MatDialogActions,
-  MatDialogClose,
-} from '@angular/material/dialog';
-
+import { MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-edit-user',
@@ -34,7 +27,7 @@ import {
 
 export class CreateEditUserComponent implements OnInit {
 
-  constructor(
+  constructor (
     public dialogRef: MatDialogRef<CreateEditUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IUser,
   ) {}
@@ -58,13 +51,10 @@ export class CreateEditUserComponent implements OnInit {
       'phone': new FormControl('', [Validators.required, Validators.pattern(/^[\+]?[(]?[0-9]{1,3}[)]?[-\s\.]?[0-9]{2,3}[-\s\.]?[0-9]{2,8}$/)]),
       'company': new FormControl('', [Validators.required, Validators.minLength(5)])
     })
-
     if (this.data) {
-      this.userForm.patchValue({'id': this.data.id})
-      this.userForm.patchValue({'username': this.data.name})
-      this.userForm.patchValue({'email': this.data.email})
-      this.userForm.patchValue({'phone': this.data.phone})
-      this.userForm.patchValue({'company': this.data.company.name})
+      this.userForm.patchValue({
+        'id': this.data.id, 'username': this.data.name, 'email': this.data.email, 'phone': this.data.phone, 'company': this.data.company.name
+      })
       this.titleButtonName = 'Редактировать';
     }
   }

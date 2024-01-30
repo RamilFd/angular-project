@@ -3,15 +3,10 @@
   <div class="user-list-cards">
     <ng-container *ngFor="let user of users$ | async">
       <app-user-card
-      [user]="user"
-      (deleteUser)="deleteUser($event)"
-      (editUser)="editUser()"
-      (openDialog)="openEditDialog(user)"
+        [user]="user"
+        (deleteUser)="deleteUser($event)"
+        (openDialog)="openEditDialog(user)"
       ></app-user-card>
     </ng-container>
   </div>
 </div>
-
-
-
-

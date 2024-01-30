@@ -12,7 +12,7 @@ export class UsersApiService {
 
   constructor(
     private http: HttpClient
-    ) { }
+    ) {}
 
   getUsers(): Observable<IUser[]>{
     return this.http.get<IUser[]>(environment.api_url);

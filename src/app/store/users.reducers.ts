@@ -23,7 +23,6 @@ export const userReducer = createReducer(
 
   on(usersActions.loadUsersSuccess,
     (state, {users}) => ({...state, users: users, loading: false})),
-      //return {...state, users: [...state.users, ...users] }
 
   on(usersActions.loadUsersFailed,
     (state, { error }) => ({...state, error: error, loading: false })),
@@ -33,8 +32,6 @@ export const userReducer = createReducer(
 
   on(usersActions.deleteUserSuccess,
     (state, {id}) => ({ ...state, users: [...state.users.filter(user => user.id !== id)], loading: false})),
-      // const usersApdated = state.users.filter(user => user.id !== id)
-      // return {...state, users: usersApdated}
 
   on(usersActions.deleteUserFailed,
     (state, {error}) => ({ ...state, loading: false, error: error})),
@@ -56,10 +53,7 @@ export const userReducer = createReducer(
       ...state,
       users: [...state.users.map((item => item.id !== user.id? item : user))],
       loading: false })),
-      // const usersApdated = state.users.map(item => item.id !== user.id? item : user)
-      // return { ...state, users: usersApdated }
 
   on(usersActions.editUserFailed,
     (state, {error}) => ({ ...state, error: error}))
 )
-

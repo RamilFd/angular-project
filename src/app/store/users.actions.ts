@@ -1,7 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { IUser } from "../interfaces/IUser";
 
-
 export const loadUsers = createAction('[USERS] loading');
 
 export const loadUsersSuccess = createAction('[USERS] loading Success',

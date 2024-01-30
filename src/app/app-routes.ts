@@ -19,8 +19,3 @@ export const appRoutes: Routes = [
     component: NotFoundComponent
   }
 ];
-
-
-
-
-// export const appRoutes: Routes = [{ path: '', component: UsersListComponent }];

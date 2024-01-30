@@ -1,40 +1,39 @@
 <div class="create-edit-card">
-<h1 mat-dialog-title>{{ titleButtonName }} пользователя</h1>
-<div mat-dialog-content>
-  <form [formGroup]="userForm" class="form-create-edit">
-    <mat-form-field>
-      <mat-label>Имя</mat-label>
-      <input matInput placeholder="Ivanov Ivan" formControlName="username" required>
-      <ng-container *ngIf="this.userForm.get('username')?.invalid && this.userForm.get('username')?.touched">
-        <mat-error>Имя меньше 4 букв</mat-error>
-      </ng-container>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>email</mat-label>
-        <input matInput placeholder="pat@example.com" formControlName="email" required>
-        <ng-container *ngIf="this.userForm.get('email')?.invalid && this.userForm.get('email')?.touched">
-          <mat-error>Некорректный Email</mat-error>
+  <h1 mat-dialog-title>{{ titleButtonName }} пользователя</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="userForm" class="form-create-edit">
+      <mat-form-field>
+        <mat-label>Имя</mat-label>
+        <input matInput placeholder="Ivanov Ivan" formControlName="username" required>
+        <ng-container *ngIf="this.userForm.get('username')?.invalid && this.userForm.get('username')?.touched">
+          <mat-error>Имя меньше 4 букв</mat-error>
         </ng-container>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Телефон</mat-label>
-      <input matInput placeholder="123456789" formControlName="phone" required>
-      <ng-container *ngIf="this.userForm.get('phone')?.invalid && this.userForm.get('phone')?.touched">
-        <mat-error>5-14 цифр</mat-error>
-      </ng-container>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Компания</mat-label>
-      <input matInput placeholder="OOO Рога и Копыта" formControlName="company" required>
-      <ng-container *ngIf="this.userForm.get('company')?.invalid && this.userForm.get('company')?.touched">
-        <mat-error>Не меньше 5 символов</mat-error>
-      </ng-container>
-    </mat-form-field>
-  <div mat-dialog-actions class="btn-user-form">
-    <button mat-button (click)="onNoClick()">Отмена</button>
-    <button mat-button  [disabled]="userForm.invalid" (click)="submitFormValue()">{{ titleButtonName }}</button>
+      </mat-form-field>
+      <mat-form-field>
+          <mat-label>email</mat-label>
+          <input matInput placeholder="pat@example.com" formControlName="email" required>
+          <ng-container *ngIf="this.userForm.get('email')?.invalid && this.userForm.get('email')?.touched">
+            <mat-error>Некорректный Email</mat-error>
+          </ng-container>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Телефон</mat-label>
+        <input matInput placeholder="123456789" formControlName="phone" required>
+        <ng-container *ngIf="this.userForm.get('phone')?.invalid && this.userForm.get('phone')?.touched">
+          <mat-error>5-14 цифр</mat-error>
+        </ng-container>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Компания</mat-label>
+        <input matInput placeholder="OOO Рога и Копыта" formControlName="company" required>
+        <ng-container *ngIf="this.userForm.get('company')?.invalid && this.userForm.get('company')?.touched">
+          <mat-error>Не меньше 5 символов</mat-error>
+        </ng-container>
+      </mat-form-field>
+      <div mat-dialog-actions class="btn-user-form">
+        <button mat-button (click)="onNoClick()">Отмена</button>
+        <button mat-button  [disabled]="userForm.invalid" (click)="submitFormValue()">{{ titleButtonName }}</button>
+      </div>
+    </form>
   </div>
-</form>
 </div>
-</div>
-
